@@ -27,7 +27,7 @@ public class CakeController {
     }
 
     @PutMapping("/cake/{id}")
-    public Optional<Cake> updateCake(@RequestBody Cake newCake, @PathVariable Long id) {
+    public Optional<Cake> updateCake(@RequestBody Cake newCake,@PathVariable Long id) {
         Optional<Cake> updateCake = cakeRepo.findById(id).map(cake -> {
             cake.setFrosted(newCake.isFrosted());
             cake.setName(newCake.getName());

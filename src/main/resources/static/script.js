@@ -1,3 +1,4 @@
+let Url = "obscure-bayou-38417.herokuapp.com/"
 console.log("This script works great")
 fetch('/cakes')
         .then(response => response.json())
@@ -10,11 +11,21 @@ fetch('/cakes')
           let tr=document.createElement("tr")
              tr.setAttribute("Contenteditable","false")
             tr.classList = 'row-${json[el].id} item'
-            tr.innerHTML = '<td> {json[el].id} </td>
-            <td>${json[el].id}</td>
-            <td>${json[el].name}</td>
-            <td>${json[el].frosted}</td>
-            <td><i class="fas fa-save icon-${json[el].id}"
+            tr.innerHTML = '<td> ${json[el].id} </td>
+            <td id ="${json[el].id}-name">${json[el].name}</td>
+            <td id ="${json[el].id}-frosted">
+            <label class = "checkbox">
+
+            <input id="${json[el].id}-checkbox" type="checkbox" json[el].frosted ? "checked" :"" }>
+
+            </label>
+            </td>
+            <td><i class="fa fa-trash icon-${json[el].id}"
+            style="cursor-pointer"   onClick="deleteItem(${json[el].id })" ></i> </td>
+            <td><i class="fas fa-pencil-alt icon-${json[el].id}"
+            style="cursor-pointer"  onClick = "updateItem( ${json[el].id} )" </i></td>
+
+            <td ><i class="fas fa-save icon-${json[el].id}"
             style="cursor-pointer" onClick= "saveItem(${json[el].id } )"
                                                               </i> </td>'
             tbody.appendChild(tr)
